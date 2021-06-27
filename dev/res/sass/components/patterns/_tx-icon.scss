@@ -1,0 +1,55 @@
+/* Icon */
+
+%tx-icon {
+  &:before,
+  &:after {
+    @include tx-pseudo;
+  }
+
+  &:before {
+    z-index: 1;
+  }
+
+  &:after {
+    z-index: 0;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:active {
+    @extend %tx-iconHover;
+  }
+
+  &-is-active {
+    @extend %tx-iconHover;
+  }
+
+  &Hover {
+
+    &:before {
+      opacity: 0;
+    }
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+  @include tx-media(coarse) {
+
+    &:after {
+      display: none;
+    }
+
+    &Hover {
+
+      &:before {
+        opacity: 1;
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,26 @@
+$footer-margin: 70px;
+$footer-height: 40px;
+$footer-paddingY: 10px;
+$footer-paddingX: 290px;
+$footer-background: #0e4447;
+$footerText-color: #f4f4f4;
+
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: $footer-height;
+  margin-top: $footer-margin;
+  color: $footerText-color;
+  background-color: $footer-background;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 17px;
+  font-family: Actor;
+  text-align: center;
+  line-height: 17px;
+}

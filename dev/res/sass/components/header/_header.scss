@@ -1,0 +1,44 @@
+$header-background: #0e4447;
+$logo-width: 58px;
+$logo-height: 33px;
+
+$logoText-width: 230px;
+$logoText-height: 60px;
+$logoText-color: #f4f4f4;
+
+$header-height: 60px;
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: $header-height;
+  padding: 0 130px;
+  background-color: $header-background;
+
+  @include tx-media(tablet) {
+    padding: 0 20px;
+  }
+
+}
+
+
+.logoImage {
+  z-index: 1;
+  display: flex;
+  width: $logo-width;
+  height: $logo-height;
+  margin-top: 13px;
+}
+
+.logoText {
+  z-index: 2;
+  display: flex;
+  margin: 13px 0 0 12px;
+  color: $logoText-color;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  font-family: Adamina;
+  line-height: 33px;
+}

@@ -1,0 +1,199 @@
+$filter-color: $black-400;
+
+.filter {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 50%;
+  margin: 40px 0 0;
+  color: $filter-color;
+
+  @include tx-media(tablet) {
+    width: 66%;
+  }
+
+  @include tx-media(phone) {
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  top: 0%;
+  right: 0%;
+  width: 1px;
+  height: 1px;
+  visibility: hidden;
+  opacity: 0;
+
+  &:checked {
+    @extend %checkbox-checked;
+  }
+
+}
+
+$label-pseudo-borderColor: $gray-700;
+$label-pseudo-backgroundColor: $gray-1000;
+$label-pseudo-backgroundColor: $gray-1000;
+$label-hover-pseudo-backgroundColor: $yellow-1000;
+
+.label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 50%;
+
+  &:before {
+    @include tx-pseudo(relative);
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    margin-right: 10px;
+    background-color: $label-pseudo-backgroundColor;
+    transition: background-color 200ms;
+  }
+
+  &:after {
+    @include tx-pseudo;
+    top: 25%;
+    left: 7px;
+    box-sizing: border-box;
+    width: 6px;
+    height: 10px;
+    border-right: 2px solid $label-pseudo-borderColor;
+    border-bottom: 2px solid $label-pseudo-borderColor;
+    border-bottom-right-radius: 2px;
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+
+    &:before {
+      background-color: $label-hover-pseudo-backgroundColor;
+      transition: background-color 2;
+    }
+
+  }
+
+  %checkbox-checked + & {
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+  @include tx-media(tablet) {
+
+    &:hover {
+
+      &:before {
+        background-color: $label-pseudo-backgroundColor;
+        transition: background-color 2;
+      }
+
+    }
+
+  }
+
+  @include tx-media(phone) {
+    width: 100%;
+  }
+
+}
+
+$bearSelect-width: calc(50% - 20px);
+$bearSelect-height: 32px;
+$bearSelect-fontSize: 14px;
+$bearSelect-color: $black-600;
+
+.bearSelect {
+  @extend %mg-select;
+  width: 100%;
+}
+
+
+$bearSelectHolder-subscribeOptions-background: $white;
+
+.bearSelectHolder {
+  @include tx-font-size($bearSelect-fontSize, none);
+  position: relative;
+  max-width: $bearSelect-width;
+
+  &%js-selectHolder-is-active {
+    @include tx-layer(content);
+  }
+
+  %js-selectToggle {
+    height: $bearSelect-height;
+    border-radius: 6px;
+    color: $bearSelect-color;
+    font-weight: 400;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-1000;
+    }
+
+  }
+
+  %js-selectOptions {
+    @extend %mg-options;
+    max-height: 85px;
+    margin: -17px 0 0;
+    background: $gray-1000;
+  }
+
+  @include tx-media(phone) {
+    min-width: 100%;
+    margin: 20px 0 0;
+  }
+
+}
+
+.bearOption {
+  @extend %mg-option;
+
+  &-is-active {
+    display: none;
+
+    &:hover {
+      background-color: $yellow-100;
+    }
+
+  }
+
+}
+
+$bearTitle-fontSize: 24px;
+$bearTitleTablet-fontSize: 22px;
+
+.bearTitle {
+  @include tx-font-size($bearTitle-fontSize);
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 40px 0 0;
+  color: $filter-color;
+  font-weight: 400;
+  line-height: 30px;
+
+  @include tx-media(tablet) {
+    @include tx-font-size($bearTitleTablet-fontSize);
+    width: 33%;
+  }
+
+  @include tx-media(phone) {
+    width: 100%;
+    margin: 20px 0 0;
+  }
+
+}
+

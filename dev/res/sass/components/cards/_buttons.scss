@@ -1,0 +1,40 @@
+$acceptButton-color: $green-400;
+$cancelButton-color: $green-1000;
+$acceptButton-hover-backgroundColor:  #feed7e;
+
+.acceptButton {
+  @extend %buttonsRule;
+  order: 4;
+  color: $cancelButton-color;
+  background-color: $acceptButton-color;
+
+  &:hover {
+    background-color: $acceptButton-hover-backgroundColor;
+  }
+
+}
+
+$cancelButton-color: $white;
+$cancelButton-backgroundColor: $green-1000;
+
+.cancelButton {
+  @extend %buttonsRule;
+  order: 5;
+  margin: 10px 0 20px;
+  color: $cancelButton-color;
+  background-color: $cancelButton-backgroundColor;
+
+  &:hover {
+    background-color: $cancelButtonActive-color;
+  }
+
+  %national & {
+    box-sizing: border-box;
+    border: 2px solid $cardButtonNational-color;
+  }
+
+  %cardPopup & {
+    margin: 0;
+  }
+
+}

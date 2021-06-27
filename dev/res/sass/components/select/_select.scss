@@ -1,0 +1,93 @@
+.js-select {
+
+  &-is-hidden {
+    position: absolute;
+    left: -10000px;
+    visibility: hidden;
+  }
+
+}
+
+.js-selectHolder {
+
+  &-is-active {
+    @extend %js-selectHolder-is-active;
+  }
+
+  &-is-inactive {
+    @extend %js-selectHolder-is-inactive;
+  }
+
+}
+
+$js-selectOptions-scroll-width: 6px;
+
+$js-selectOptions-scrollThumb-background: $black;
+
+// sass-lint:disable no-vendor-prefixes
+
+.js-selectOptions {
+  @extend %js-selectOptions;
+  position: absolute;
+  z-index: 0;
+  top: 100%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-y: overlay;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  box-sizing: border-box;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  user-select: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: $js-selectOptions-scroll-width;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  %js-selectHolder-is-active > & {
+    border-radius: 6px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $UITransitionDefault, visibility $UITransitionDefault step-start;
+
+    &::-webkit-scrollbar {
+      display: block;
+    }
+
+  }
+
+  %js-selectHolder-is-inactive > & {
+    transition: opacity $UITransitionDefault, visibility $UITransitionDefault step-end;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+
+}
+
+// sass-lint:enable no-vendor-prefixes
+
+.js-selectToggle {
+  @extend %mg-selectStyle;
+  @extend %js-selectToggle;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+}

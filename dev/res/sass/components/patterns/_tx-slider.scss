@@ -1,0 +1,26 @@
+/* Slider */
+
+%tx-slider {
+
+  &Holder {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &Body {
+    position: relative
+    display: flex;
+    filter: brightness(1.01);
+    transform: translateZ(0);
+  }
+
+  &Slide {
+    flex-shrink: 0;
+    width: 100%;
+    vertical-align: top;
+    touch-action: manipulation;
+    user-select: none;
+    transform: translateZ(0);
+  }
+
+}

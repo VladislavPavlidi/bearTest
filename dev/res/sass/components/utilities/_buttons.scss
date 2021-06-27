@@ -1,0 +1,26 @@
+$cancelButtonActive-color: $green-1100;
+$cardButtonNational-color: $white;
+
+$buttonsRule-width: 180px;
+$buttonsRule-height: 32px;
+$buttonsRule-border: 4px;
+$buttonsRule-borderRadius: 16px;
+
+%buttonsRule {
+  width: $buttonsRule-width;
+  height: $buttonsRule-height;
+  padding: 0;
+  border-radius: $buttonsRule-borderRadius;
+  text-align: center;
+  line-height: 10px;
+  pointer-events: all;
+
+  %filteredCard & {
+    display: none;
+  }
+
+  %cards & {
+    z-index: 5;
+  }
+
+}

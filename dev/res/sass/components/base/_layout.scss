@@ -1,0 +1,46 @@
+/* Layout */
+
+// sass-lint:disable no-vendor-prefixes
+
+html {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  min-height: 100%;
+}
+
+// sass-lint:enable no-vendor-prefixes
+
+body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background: $background-color;
+  // font-family: 'Itim', cursive;
+}
+
+// sass-lint:disable no-vendor-prefixes
+
+.page {
+
+  &-is-stuck {
+    overflow: hidden;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+  }
+
+}
+
+
+
+/* Phone Layout */
+
+@import '_layout-phone';
+
+
+
+/* Print Layout */
+
+@import '_layout-print';

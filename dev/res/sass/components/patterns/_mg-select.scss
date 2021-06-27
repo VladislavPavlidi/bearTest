@@ -1,0 +1,140 @@
+$mg-select-height: 50px;
+$mg-select-fontSize: 14px;
+$mg-select-background: $gray-100;
+$mg-select-hover-background: $blue-100;
+
+%mg-selectStyle {
+  @extend %mg-dropdown;
+  @include tx-font-size($mg-select-fontSize, none);
+  height: $mg-select-height;
+  padding: 0 (($mg-select-height / 2) + 25px) 0 ($mg-select-height / 2);
+  background-color: $mg-select-background;
+  font-weight: bold;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $mg-select-hover-background;
+  }
+
+}
+
+// sass-lint:disable no-vendor-prefixes
+
+%mg-select {
+  @extend %mg-selectStyle;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+}
+
+%mg-options {
+  padding: 30px 0 0;
+
+  &:after {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    width: 30px;
+    height: 0;
+    padding: 30px 0 0;
+    border-radius: 0 0 20px;
+    margin: 0 0 0 100%;
+    transform: translate(-30px, 0);
+  }
+
+  @supports (overflow-y: overlay) {
+    padding: 15px 0 0;
+  }
+
+  @supports (-ms-overflow-style: -ms-autohiding-scrollbar) {
+    padding: 15px 10px 0 0;
+    border-width: 20px 0 10px 10px;
+
+    &:after {
+      transform: translate(-50px, 0);
+    }
+
+  }
+
+}
+
+// sass-lint:enable no-vendor-prefixes
+
+$mg-option-height: 25px;
+$mg-option-fontSize: 14px;
+$mg-option-color: $black-600;
+$mg-option-background: $gray-100;
+$mg-option-active-background: $yellow-1000;
+
+%mg-option {
+  @include tx-link($mg-option-color);
+  @include tx-font-size($mg-option-fontSize, none);
+  position: relative;
+  z-index: 0;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: $mg-option-height;
+  padding: 0 15px 0 25px;
+  margin: 5px 0 0;
+  background: none;
+  text-align: left;
+  text-decoration: none;
+  line-height: $mg-option-height;
+
+  &:before,
+  &:after {
+    @include tx-pseudo;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: $UITransitionFast;
+  }
+
+  &:before {
+    background: $mg-option-background;
+  }
+
+  &:after {
+    background: $mg-option-active-background;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+
+    &:after {
+      opacity: 1;
+    }
+
+  }
+
+  &:last-child {
+    margin: 5px 0 -20px;
+  }
+
+}
+
+%mg-option-active {
+  font-weight: bold;
+
+  &:after {
+    opacity: 1;
+  }
+
+}

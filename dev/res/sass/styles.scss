@@ -1,0 +1,52 @@
+// TemplateX (Mixins, Patterns, Helpers)
+
+@import 'tx/_tx';
+
+
+
+// Project Global Properties
+
+@import 'project/_project';
+
+// Patterns
+
+@import 'patterns/_mg-select';
+
+@import 'patterns/_mg-dropdown';
+
+
+// Project Baseline
+
+@import 'base/_baseline';
+@import 'base/_layout';
+
+
+
+// Utilities
+
+@import 'utilities/_utilities';
+
+@import 'utilities/_buttons';
+
+// Components
+
+@import 'cards/_cards';
+@import 'cards/_buttons';
+@import 'filter/_filter';
+@import 'footer/_footer';
+@import 'header/_header';
+@import 'main/_main';
+@import 'popup/_popup';
+@import '_fonts';
+@import 'select/_select';
+
+
+// Sprites
+
+@import '_sprites';
+
+
+
+// Cascade
+
+@import '_cascade';

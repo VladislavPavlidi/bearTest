@@ -1,0 +1,13 @@
+$mg-dropdownIcon-width: 14px;
+$mg-dropdownIcon-height: 8px;
+
+%mg-dropdownIcon {
+  background-image: url('/res/images/selectImage.svg');
+  background-size: $mg-dropdownIcon-width $mg-dropdownIcon-height;
+  background-repeat: no-repeat;
+}
+
+%mg-dropdown {
+  @extend %mg-dropdownIcon;
+  background-position: right 30px center;
+}

@@ -1,0 +1,322 @@
+$popup-width: 450px;
+$popup-backgroundColor: $white;
+$popup-gap: 30px;
+$popup-maxHeight: 700px;
+$popup-national-backgroundColor: $green-1000;
+
+.popup {
+  @extend %cardPopup;
+  @include tx-layer(over, 10);
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: $popup-width;
+  height: auto;
+  max-height: $popup-maxHeight;
+  padding: 0 30px 20px;
+  border-radius: 5px;
+  background-color: $popup-backgroundColor;
+  transform: translateX(-50%);
+
+  &-is-active {
+    display: flex;
+  }
+
+  &-is-filtered {
+    @extend %filteredPopup;
+  }
+
+  &-is-national {
+    @extend %nationalPopup;
+    background-color: $popup-national-backgroundColor;
+
+    &:before {
+      @include tx-pseudo(absolute);
+      z-index: 1;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 50%;
+      border-radius: 6px 6px 0;
+      background: linear-gradient(180deg, $cardNational-color 0%, $national-pseudo-backgroundLinearGradient 100%);
+    }
+
+    &:after {
+      @include tx-pseudo(absolute);
+      z-index: 2;
+      content: 'В заповеднике';
+      margin-top: 16px;
+      color: $lightGreen;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  @include tx-media(wide) {
+    top: 75px;
+    padding: 0 30px 30px;
+  }
+
+  @include tx-media(phone) {
+    top: 50%;
+    width: 100%;
+    padding: 0 15px 30px;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+.popupImageHolder {
+  position: relative;
+  order: -1;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+  margin: 0 (-$popup-gap);
+
+  &:before {
+    @include tx-pseudo(relative);
+    width: 100%;
+    padding: percentage(366 / 550) 0 0;
+  }
+
+}
+
+$popupName-fontSize: 24px;
+$popupName-phone-fontSize: 20px;
+$popupName-nationalPopup-color: $white;
+
+.popupName {
+  @include tx-font-size($popupName-fontSize, none);
+  margin: 10px 0 5px;
+  font-weight: 400;
+
+  %nationalPopup & {
+    color: $popupName-nationalPopup-color;
+  }
+
+  @include tx-media(wide) {
+    margin: 20px 0 5px;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($popupName-phone-fontSize, none);
+    margin-top: 5px;
+  }
+
+}
+
+$popupBearAbout-fontSize: 18px;
+$popupBearAbout-phone-fontSize: 14px;
+$popupBearAbout-color: $gray-800;
+$popupBearAbout-nationalPopup-color: $white-300;
+
+%popupBearAbout {
+  @include tx-font-size($popupBearAbout-fontSize, none);
+  color: $popupBearAbout-color;
+
+  %nationalPopup & {
+    color: $popupBearAbout-nationalPopup-color;
+  }
+
+  @include tx-media(phone) {
+    @include tx-font-size($popupBearAbout-phone-fontSize, none);
+  }
+
+}
+
+.popupType {
+  @extend %popupBearAbout;
+}
+
+.popupSex {
+  @extend %popupBearAbout;
+}
+
+$popupInfo-fontSize: 14px;
+$popupInfo-color: $gray-800;
+$popupInfo-scrollbar-width: 5px;
+$popupInfo-scrollbarThumb-background: $green-1100;
+$popupInfo-scrollbarCorner-background: $white;
+$popupInfo-nationalPopup-scrollbarCorner-background: $green-1000;
+$popupInfo-phone-height: 130px;
+$popupInfo-nationalPopup-color: $white-300;
+
+//sass-lint:disable no-vendor-prefixes
+
+.popupInfo {
+  @include tx-font-size($popupInfo-fontSize, none);
+  overflow: scroll;
+  max-height: 100px;
+  margin: 10px 0 0;
+  color: $popupInfo-color;
+
+  &::-webkit-scrollbar {
+    width: $popupInfo-scrollbar-width;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $popupInfo-scrollbarThumb-background;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: $popupInfo-scrollbarCorner-background;
+  }
+
+  %nationalPopup & {
+    color: $popupInfo-nationalPopup-color;
+
+    &::-webkit-scrollbar-corner {
+      background-color: $popupInfo-nationalPopup-scrollbarCorner-background;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    height: $popupInfo-phone-height;
+  }
+
+}
+
+.popupImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+$popupCloseButton-width: 20px;
+$popupCloseButton-heigth: 20px;
+$popupCloseButton-pseudo-backgroundColor: $white;
+$popupCloseButton-popupPseudo-pseudo-backgroundColor: $yellow-100;
+
+
+.popupCloseButton {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: -30px;
+  width: $popupCloseButton-width;
+  height: $popupCloseButton-heigth;
+  padding: 0;
+  background-color: transparent ;
+  text-indent: -10000px;
+  opacity: 1;
+
+  &:before {
+    @include tx-pseudo;
+    top: 8px;
+    left: -3px;
+    width: 25px;
+    height: 2px;
+    background-color: $popupCloseButton-pseudo-backgroundColor;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    @include tx-pseudo;
+    top: 8px;
+    left: -3px;
+    width: 25px;
+    height: 2px;
+    background-color: $popupCloseButton-pseudo-backgroundColor;
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+
+    &:before,
+    &:after {
+      background-color: $popupCloseButton-popupPseudo-pseudo-backgroundColor;
+    }
+
+  }
+
+  @include tx-media(phone) {
+    top: 10px;
+    right: 10px;
+  }
+
+}
+
+.popupButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 20px 0 0;
+
+  @include tx-media(wide) {
+    margin: 30px 0 0;
+  }
+
+  @include tx-media(phone) {
+    margin: 15px 0 0;
+  }
+
+  %filteredPopup & {
+    display: none;
+  }
+
+}
+
+$popupAcceptButton-hover-backgroundColor: #feed7e;
+$popupAcceptButton-color: $green-1000;
+$popupAcceptButton-backgroundColor: $green-400;
+$popupAcceptButton-phone-width: 140px;
+
+.popupAcceptButton {
+  @extend %buttonsRule;
+  order: 4;
+  margin: 0;
+  color: $popupAcceptButton-color;
+  background-color: $popupAcceptButton-backgroundColor;
+
+  &:hover {
+    background-color: $popupAcceptButton-hover-backgroundColor;
+  }
+
+  @include tx-media(phone) {
+    width: $popupAcceptButton-phone-width;
+  }
+
+}
+
+$popupCancelButton-hover-backgroundColor: $green-1100;
+$popupCancelButton-color: $white;
+$popupCancelButton-backgroundColor: $green-1000;
+$popupCancelButton-nationalPopup-borderColor: $white;
+$popupCancelButton-phone-width: 140px;
+
+.popupCancelButton {
+  @extend %buttonsRule;
+  order: 5;
+  color: $popupCancelButton-color;
+  background-color: $popupCancelButton-backgroundColor;
+
+  &:hover {
+    background-color: $popupCancelButton-hover-backgroundColor;
+  }
+
+  %nationalPopup & {
+    box-sizing: border-box;
+    border: 2px solid $popupCancelButton-nationalPopup-borderColor;
+  }
+
+  @include tx-media(phone) {
+    width: $popupCancelButton-phone-width;
+  }
+
+}

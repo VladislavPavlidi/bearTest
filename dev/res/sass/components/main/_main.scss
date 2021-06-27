@@ -1,0 +1,21 @@
+$card-marginRight: 20px;
+$main-paddingRight: 130px - $card-marginRight;
+$main-tablet-paddingRight: 25px - $card-marginRight;
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 $main-paddingRight 0 130px;
+
+  @include tx-media(tablet) {
+    padding: 0 $main-tablet-paddingRight 0 25px;
+  }
+
+  @include tx-media(phone) {
+    padding: 0 25px;
+  }
+
+}
